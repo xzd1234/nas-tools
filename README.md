@@ -50,3 +50,17 @@ https://github.com/jxxghp/nas-tools/releases
 https://spk.imnks.com/
 
 https://spk7.imnks.com/
+
+* 配置消息推送代理
+-
+-  由于微信官方限制，2022年6月20日后创建的企业微信应用需要有固定的公网IP地址并加入IP白名单后才能接收到消息，使用有固定公网IP的代理服务器转发可解决该问题
+-
+-    如使用 Nginx 搭建代理服务，需在配置中增加以下代理配置：
+-    ```
+-    location /cgi-bin/gettoken {
+-      proxy_pass https://qyapi.weixin.qq.com;
+-    }
+-    location /cgi-bin/message/send {
+-      proxy_pass https://qyapi.weixin.qq.com; 
+-    }
+-    ```
